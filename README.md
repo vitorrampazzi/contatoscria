@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Contact Manager
 
-## Getting Started
+A Next.js and React learning project for listing, filtering, and managing contacts. It explores controlled forms, React hooks, API requests, and browser caching.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Load contacts from a MockAPI endpoint.
+- Filter contacts by name, email, or phone number.
+- Add and remove contacts in local application state.
+- Display contact statistics.
+- Cache contact data in `localStorage` with a five-minute expiry.
+- Show loading, error, and connection states.
+- View individual contacts through a dynamic route.
+
+Contact additions and removals in the main page update local state and the browser cache; they are not persisted to the remote API. A later successful API response can replace those local changes.
+
+## Technology
+
+- Next.js
+- React
+- JavaScript
+- Tailwind CSS
+- Axios
+
+## Project structure
+
+```text
+app/
+├── components/
+├── contact/[id]/
+├── utils/
+│   ├── api.js
+│   └── cache.js
+├── layout.js
+└── page.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run locally
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Install Node.js and npm, then run:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/vitorrampazzi/contatoscria.git
+cd contatoscria
+npm install
+npm run dev
+```
 
-## Learn More
+Open [localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+The Axios configuration is in `app/utils/api.js`. The current implementation reads the `/contacts` resource from a MockAPI service.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available commands
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the application |
+| `npm start` | Start the production server after building |
+| `npm run lint` | Run ESLint |
